@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+    * {
+      outline: none;
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    
+    /* Smooth Scroll */
+    html{
+      scroll-behavior: smooth;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Custom Scrollbar  */
+    
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1; 
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #888; 
+    }
+    ::-webkit-scrollbar-thumb:hover{
+      background: #555; 
+    }
+    
+    body {
+      font-family: "Poppins", sans-serif;
+      background-image: url(images/background.jpg);
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 2em;
+      margin: 0;
+      width: 100%;
+      height: 100vh;
+    }
+    main {
+      background-color: rgba(249, 246, 246, 0.31);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      max-width: 1250px;
+      width: 100%;
+      border-radius: 5px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      font-weight: 500;
+      padding: 1rem 1rem 2rem 1rem;
+      overflow: auto;
+      
+    }
+    main::-webkit-scrollbar{
+      display: none;
+    }
+    .navbar{
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      background-color:rgb(200, 227, 237);;
+      padding: 0 20px;
+      transition: 0.3s;
+      border-radius: 10px;
+      position: sticky;
+      top: 0;
+    
+    }
+    
+    .navigation{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .navigationmenu{
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      align-items: center;
+      z-index: 1;
+      transition: 0.5s;
+    }
+    .navigationmenu li{
+      list-style-type: none;
+    }
+    .navigationmenu li a{
+      color: black;
+      text-decoration: none;
+      display: block;
+      padding: 15px 23px;
+      font-size: 15px;
+      line-height: 1;
+      transition: 0.3s;
+    }
+    .navigationmenu li a:hover{
+      box-shadow: 0 -5px 0px rgb(138, 109, 134) inset,
+      500px 0 0 rgba(227, 177, 177, 0.31) inset;
+      padding: 30px 20px 40px 20px;
+    }
+    
+    .herosection{
+      margin: 2rem 40px;
+      width: 100;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content:center;
+      
+    }
+    .profileimage{
+      width: 250px;
+      height: 350px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 5px;
+    }
+    .herosectiondetailes{
+      text-align: center;
+      letter-spacing: 5px;
+      margin-left: 2em;
+    }
+    
+    .herosectiondetailes  >h1{
+      font-size: 50px;
+      margin: 10px;
+    }
+    .social{
+      height: 47px;
+      width: 48px;
+      margin: 0em;
+      padding: 5px 2px;
+    }
+    .social:hover{
+      transition: ease-in 300ms ;
+      transform: scale(0.85);
+    }
+    .socialmedia{
+      margin: 2px;
+      padding: 2px 2px;
+    
+    }
+    .aboutme{
+      text-align: center;
+    }
+    .aboutme h1{
+      margin: 1em;
+    }
+    
+    .skillandproject{
+      margin: 1rem;
+      display: grid;
+      grid-template-columns: [one] 50% [two] 50%;
+      grid-gap: 10px;
+      align-items: center;
+      justify-content: center;
+      width: calc(100% - 2rem);
+    }
+    
+    @media only screen and (max-width: 720px){
+      .skillandproject{
+        grid-template-columns: [one] 100%;
+        grid-template-rows: [one] [two]; 
+      }
+    }
+    .skillandproject > .skill , .skillandproject > .project{
+      min-width: 250px;
+      margin: 1rem;
+      min-height: 250px;
+    }
+    .skillandproject > .skill , .skillandproject > .project{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      align-content: center;
+      background-color: rgb(255 255 255 / 31%);
+      border: 1px solid rgb(255 255 255 / 31%);
+      border-radius: 5px;
+      margin-bottom: 2rem;
+    }
+    .cardheading{
+      display: block;
+      width: 90%;
+      margin: 0;
+      margin-bottom: 1rem;
+    }
+    .skillandproject > .skill > img{
+      width: 90px;
+      height: 110px;
+      margin-bottom: 15px;
+      margin-right: 35px;
+    }
+    .skillandproject > .skill > img:hover{
+      transition: ease-in 300ms ;
+      transform: scale(0.85);
+      cursor: pointer;
+    }
+     .projectcontainer >img{
+      width: 80px;
+      height: 80px;
+      padding-right: 10px;
+    }
+    .projectcontainer{
+      width: 90%;
+      display: flex;
+    }
+     .projectdescription h3{
+      margin: 0;
+    }
+    .projectcontainer >.projectdescription p{
+      margin-bottom: 1rem;
+      margin: 1rem;
+    }
+    .contactForm{
+      margin: 2rem;
+      width: calc(100% - 4rem);
+      background-color: rgb(255 255 255 / 31%);
+      border: 1px solid rgb(255 255 255 / 31%);
+      border-radius: 5px;
+      padding: 1rem;
+    }
+    .contactForm >.formGroup{
+      margin: 1rem;
+    }
+    .formGroup > input, .formGroup > textarea{
+      width: 100%;
+      padding: 5px 10px;
+      margin-top: 5px;
+      font-weight: 600;
+    }
+    .submitButton{
+      padding: 10px 20px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all;
+    }
+    .submitButton:hover{
+      background-color: rgb(203, 185, 185);
+    
+    }
+    @media only screen and (max-width: 460px){
+    
+      .profileimage{
+        width: 267px;
+        height: 372px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 5px;
+      }
+      .herosectiondetailes > h1{
+        margin-left: 15px;
+      }
+    }
+    
+    .herosectiondetailes > h1{
+      font-size: 33px;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    } 
+    
+    .herosectiondetailes > h3{
+      margin: 0;
+      font-size: 20px;
+      font-weight: 400;
+      text-align: center;
+    }
+    .hamburger{
+      position: relative;
+      width: 30px;
+      height: 4px;
+      background-color: black;
+      border-radius: 10px;
+      cursor: pointer;
+      z-index: 2;
+      transition: 0.3s;
+    }
+    .hamburger:before,
+    .hamburger:after{
+    content: " ";
+    position: absolute;
+    height: 4px;
+    right: 0;
+    background:black;
+    border-radius: 10px;
+    transition: 0.3s;
+    }
+    .hamburger:before{
+      top: -10px;
+      width: 20px;
+    }
+    .hamburger:after
+    {
+      width: 25px;
+      top: 10px;
+    }
+    .toggle-menu{
+    position: absolute;
+    width: 30px;
+    height: 100%;
+    z-index: 3;
+    cursor: pointer;
+    opacity: 0;
+    }
+    .hamburger,
+    .toggle-menu{
+       display: none; 
+    }
+    .navigation input:checked ~ .hamburger{
+      background: transparent;
+    }
+    .navigation input:checked ~ .hamburger:before{
+      top: 0;
+      transform: rotate(-45deg);
+      width: 30px;
+    }
+    .navigation input:checked ~.hamburger::after{
+      top: 0;
+      transform: rotate(45deg);
+      width: 30px;
+    }
+    @media screen and  (max-width: 992px){
+    .hamburger,
+    .toggle-menu{
+      display: block;
+    }
+    .navigationmenu{
+      justify-content: start;
+      flex-direction: column;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      right: -300px;
+      background-color: rgb(200, 227, 237);;
+      width: 220px;
+      height: 80%;
+      padding-top: 65px;
+      position:absolute ;
+    }
+    .navigation input:checked~ .navigationmenu{
+      right: 0;
+      box-shadow: -20px 0 40px rgba(193, 162, 162, 0.31);
+    }
+    .navigationmenu li{
+      width: 100%
+    
+    }
+    .navigationmenu li{
+      background-color: rgb(200, 227, 237);
+    }
+     .navigationmenu li a,
+    .navigationmenu li a:hover{
+      padding: 30px;
+      font-size: 18px;
+      box-shadow: 0 1px 0 rgba(16, 10, 10, 0.31)inset;
+    }   
+    }
+    #more{
+      display:none;
+    }
+    #myBtn{
+      color: blue;
+      cursor: pointer;
+      padding: 4px 4px;
+    }  
+
+
+    .flip-card {
+   background-color: transparent;
+   width: 1170px;
+   height: 750px;
+   perspective: 1000px;
+   }
+   .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d ;
+   }
+   .flip-card:hover .flip-card-inner{
+    transform: rotateY(180deg);
+   }
+   .flip-card-front,
+   .flip-card-back {
+       position: absolute;
+       width: 150%;
+       height: 100%;
+       -webkit-backface-visibility: hidden;
+       backface-visibility: hidden;
+       border-radius: 16px;
+   }
+   .flip-card-front{
+    background-image:
+    linear-gradient(
+      45deg, #6f04d9, #d9048e  
+    );
+    
+   }
+   .flip-card-front img{
+    width: 2000px;
+    margin-top : 0rem;
+   }
+   .flip-card-back{
+    background-image:
+    linear-gradient(
+        45deg, #6f04d9 , #8a045c 
+    );
+    color: #ffffff;
+    transform: rotateY(180deg);
+   }
+   .flip-card-back img {
+    width: 1800px;
+    margin-top: 0rem;
+   }
+   .flip-card-back h3{
+    margin-bottom: 0.3rem;
+   }
+   .flip-card-back h1{
+    margin:0;
+   }
+
+   
+h3{
+    background-color: #c704d9c7;
+}
+h1{
+    background-color: #c704d9b7;
+
+}
+</style>
+<script>
+  function myfunction()
+  {
+    var dots =document.getElementById("dots");
+    var moreText =document.getElementById("more");
+    var btnText= document.getElementById("myBtn");
+
+if (dots.style.display==="none"){
+    dots.style.display="inline";
+    btnText.innerHTML="Read more.....";
+    moreText.style.display="none";
+}
+else{
+    dots.style.display="none";
+    btnText.innerHTML="Read less";
+    moreText.style.display="inline";
+}
+}
+</script>
+</head>
+<body>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+    
+            <img src="AK..Front.png"/>  
+            <h1> <MARQUEE DIRECTION="down" BEHAVIOR="alternate" STYLE="width:800px; height:90px">
+              <MARQUEE BEHAVIOR="alternate"> <span style="color: black">Full-Stack Developer </span>  </h3></MARQUEE>
+              </MARQUEE>
+        </div>
+        <div class="flip-card-back">
+            <img src="Ak.back.jpg"/>
+    
+        
+        
+        </div>
+        </div>
+        </div>
+        
+
+
+    <main class="main">
+        <nav class="navbar">
+            <h1>ATUL KHAIRNAR</h1>
+           <div class="navigation">
+            <input type="checkbox"  class="toggle-menu" id="menu-btn">
+            <div class="hamburger"></div>
+             <ul class="navigationmenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skill">skills</a></li>
+                <li><a href="#project">projects</a></li>
+                <li><a href="#contactForm">Let's Connect!</a></li>
+            </ul>
+            <div>
+        </nav>
+        <section class="herosection" id="home">
+        <img src="AK.Classy.jpeg" alt="" class="profileimage">
+        <div class="herosectiondetailes">
+            <h1>Atul Khairnar </h1>
+            <h3>Full-Stack Developer </h3>
+            <div class="socialmedia">
+                <a href="https://www.instagram.com/atulkhairnar_1112/" class="instagram"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/640px-Instagram_icon.png" alt="inst"class="social"></a>
+                <a href="https://www.linkedin.com/in/atul
+                -khairnar-3b7781232" class="linkdin"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="link"class="social"></a>
+                <a href="https://github.com/atulkkhairnar" class="github"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="git" class="social"></a>
+           
+                <a href="atulkhairnar1112@gmail.com" class="G-mail"><img src="gmail..png" alt="Mail" class="social"></a>
+              </div>
+        </div>
+      
+        </section>
+        <section class="aboutme" id="aboutme">
+            <h1>About me.......</h1>
+            <h2><pre>Helllo there mate,
+        I am Atul Khairnar. I'm a Programmer.
+            </pre>
+                
+            </h2>
+            <h2><pre>
+              I've been coding for almost 1.5 years,Primarily focusing on the Full-Stack.
+              Stepping into the field of Artificial Intelligence.
+            </pre></h2>
+            <h1><b>My Goals</b></h1>
+            <pre><h2> 
+                           
+                                        1.To know everything about something and something about everything.
+                  2.To expand my knowledge on various CS fields.
+  3. To love explore the things.
+                                    4. My problem-solving ability with my technical skills to make a
+  positive impact.
+          </h2>  
+            </pre>
+            
+        <section class="skillandproject">
+            <div class="skill" id="skill">
+                <h1 class="cardheading">Skills</h1>
+                <img  title="HTML"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9ptrBHgBFCMjzhviaHrC-I1hXgVwtzuJcoD48790&s">
+                <img title="CSS"  src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1452px-CSS3_logo_and_wordmark.svg.png" >
+                <img  title="javascript"  src="https://p.kindpng.com/picc/s/171-1718046_javascript-programming-language-logo-hd-png-download.png" >
+                <img  title="java" src="https://p.kindpng.com/picc/s/174-1746636_java-logo-png-transparent-png.png" >
+                <img title="Python" src="Python-.png"  >
+                <img title="MySQL"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFqbHICIslmKeJBB1gACMKb4D7OiN1SpMo2vBbekFPfDobzdMC-xdk4CSQ3yjLhFRiB3k&usqp=CAU" >
+                <img title="C" src=" https://e7.pngegg.com/pngimages/465/779/png-clipart-blue-and-white-c-logo-the-c-programming-language-computer-programming-computer-icons-programmer-blue-angle.png"  >
+                <img title="C++" src="https://e7.pngegg.com/pngimages/46/626/png-clipart-c-logo-the-c-programming-language-computer-icons-computer-programming-source-code-programming-miscellaneous-template.png "  >
+
+            </div>
+            <div class="project" id="project">
+                <h1 class="cardheading">Projects</h1>
+                <div class="projectcontainer">
+                    <img src="java-project.png" >
+                    <div class="projectdescription">
+                        <h3>Electricity Billing System </h3>
+                          <p> •Electricity Billing System Project in Java is a
+                            software-based application developed in Java
+                            programming language. <span id="dots">.....</span>
+                              <span id="more">Electricity Billing System Project in Java is a
+                                software-based application developed in Java
+                                programming language. The project aims at
+                                serving the department of electricity by
+                                computerizing the billing system. It mainly
+                                focuses on the calculation of Units consumed
+                                during the specified time and the money to be
+                                paid to electricity offices. This computerized
+                                system will make the overall billing system easy,
+                                accessible, comfortable and effective for
+                                consumers.
+                              </span></p>
+                           
+                        <span onclick=" myfunction()" id="myBtn"> Read more...</span>
+                    </div>
+                </div>
+                <div class="project" id="project">
+                  
+                  <div class="projectcontainer">
+                      <img src="portfolio-image.png" >
+                      <div class="projectdescription">
+                          <h3>Portfolio website </h3>
+                            <p> • Front end Developer making a responsive Portfolio
+                              website by using HTML and CSS. <span id="dots"></span>
+                                <span id="more">
+                                </span></p>
+                             
+                          
+                      </div>
+                  </div>
+                <div class="project" id="project">
+                    
+                    <div class="projectcontainer">
+                        <img src="https://energypedia.info/images/thumb/e/ef/Schematic_of_Solar_Dryer.JPG/250px-Schematic_of_Solar_Dryer.JPG" >
+                        <div class="projectdescription">
+                            <h3>Solar Dryar </h3>
+                              <p> •A good method of food preservation is one that 
+                                slobs dobn or prevents altogether the action of 
+                                the agents of spoilage. <span id="dots">.....</span>
+                                  <span id="more"><details><summary>Solar Dryar</summary>A good method of food preservation is one that 
+                                    slobs dobn or prevents altogether the action of 
+                                    the agents of spoilage. Also, during the process
+                                    of food preservation, the food should not ye 
+                                    damaged. In order to achieve this, certain yasic 
+                                    methods bere applied on different t-pes of 
+                                    foods. •or example in earlier da-s, in ver- cold 
+                                    beather condition, ice bas used to preserve 
+                                    foods. Thus, ver- lob temperature yecame an 
+                                    eGcient method for preventing food spoilage.</details> 
+                                    
+                                
+                                  </span></p>
+                               
+                            <span onclick=" myfunction()" id="myBtn"> Read more...</span>
+                        </div>
+                    </div>
+                <div class="projectcontainer">
+                    
+         <h1>Let's Connect!</h2>
+            <button class='submitButton' onClick={submit()}>Connect</button>
+          </section>
+    </main>
+          
+    
+          
+</body>
+</html>
+</html>
